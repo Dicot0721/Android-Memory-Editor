@@ -60,7 +60,7 @@ std::optional<pid_t> FindPidByProcessName(std::string_view processName) {
             continue; // not a directory
         }
         const std::string_view dirname{entry->d_name};
-        if (!std::all_of(dirname.cbegin(), dirname.cend(), &::isdigit)) {
+        if (!std::ranges::all_of(dirname, [](char c) { return std::isdigit(c); })) {
             continue;
         }
 
