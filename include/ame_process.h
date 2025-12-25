@@ -36,7 +36,7 @@ bool FreezeProcessByPid(pid_t pid);
 
 bool ResumeProcessByPid(pid_t pid);
 
-int DoWithProcessName(std::string_view processName, std::move_only_function<bool(pid_t)> operation);
+int DoWithProcessName(std::string_view processName, std::move_only_function<bool(pid_t)> &&operation);
 
 int FreezeProcessByName(std::string_view processName);
 

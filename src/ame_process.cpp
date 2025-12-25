@@ -159,7 +159,7 @@ bool ResumeProcessByPid(pid_t pid) {
  * @retval -1  Could not find the process.
  * @retval -2  The operation failed.
  */
-int DoWithProcessName(std::string_view processName, std::move_only_function<bool(pid_t)> operation) {
+int DoWithProcessName(std::string_view processName, std::move_only_function<bool(pid_t)> &&operation) {
     const auto pidOpt = FindPidByProcessName(processName);
     if (!pidOpt.has_value()) {
         LOG_ERROR("Cannot find process '{}'.", processName);
